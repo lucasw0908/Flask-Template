@@ -5,7 +5,7 @@ from flask.logging import default_handler
 from flask_wtf import CSRFProtect
 
 from .config import DevConfig, ProdConfig
-from .modules.database import db
+from .models import db
 
 
 log = logging.getLogger(__name__)

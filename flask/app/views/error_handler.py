@@ -6,6 +6,11 @@ log = logging.getLogger(__name__)
 error_handler = Blueprint("error_handler", __name__)
 
 
+@error_handler.app_errorhandler(403)
+def error403(error):
+    return render_template("error/403.html", error=error), 403
+
+
 @error_handler.app_errorhandler(404)
 def error404(error):
     return render_template("error/404.html", error=error), 404
