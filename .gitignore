@@ -162,5 +162,3 @@ cython_debug/
 
 node_modules/
 .vscode/
-ssl.key
-ssl.csr
