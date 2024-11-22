@@ -11,6 +11,6 @@
         "dest": "main.py"
       }
     ],
-    "installCommand": "npm install",
+    "installCommand": "npm install && pip install -r requirements.txt",
     "buildCommand": "npm run build"
 }
