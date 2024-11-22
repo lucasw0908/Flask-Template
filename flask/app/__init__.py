@@ -75,7 +75,7 @@ def create_app() -> Flask:
     """
     init_logger()
     app = Flask(__name__)
-    app.config.from_object(DevConfig)
+    app.config.from_object(ProdConfig)
     csrf = CSRFProtect(app)
     app_load_blueprints(app)
     db.__init__(app)
