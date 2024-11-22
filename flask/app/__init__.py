@@ -27,16 +27,17 @@ def init_logger(debug: bool=False) -> None:
     else:
         log.setLevel(logging.INFO)
         
-    file_handler = logging.handlers.RotatingFileHandler(
-        filename=os.path.join(BASEDIR, "app.log"),
-        encoding="utf-8",
-        maxBytes=8**7, 
-        backupCount=8
-    )
+    if os.access(BASEDIR, os.W_OK):
+        file_handler = logging.handlers.RotatingFileHandler(
+            filename=os.path.join(BASEDIR, "app.log"),
+            encoding="utf-8",
+            maxBytes=8**7, 
+            backupCount=8
+        )
         
-    file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(formatter)
-    logging.getLogger().addHandler(file_handler)
+        file_handler.setLevel(logging.DEBUG)
+        file_handler.setFormatter(formatter)
+        logging.getLogger().addHandler(file_handler)
     
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.DEBUG)
@@ -44,6 +45,7 @@ def init_logger(debug: bool=False) -> None:
     logging.getLogger().addHandler(console_handler)
     
     #logging.getLogger().addHandler(default_handler)
+    
     
 def app_load_blueprints(app: Flask) -> None:
     """
